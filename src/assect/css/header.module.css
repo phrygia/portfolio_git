@@ -1,0 +1,98 @@
+.color_btns_wrap {
+    position: fixed;
+    /* left: 0; */
+    top: 50%;
+    z-index: 99;
+    display: flex;
+    border-radius: 14px;
+    overflow: hidden;
+    align-items: center;
+    font-size: 1.2em;
+    font-weight: 500;
+    -webkit-transform-origin: left top;
+    -ms-transform-origin: left top;
+    transform-origin: left top;
+    -webkit-transform: rotate(-90deg) translate(-50%, 0);
+    -ms-transform: rotate(-90deg) translate(-50%, 0);
+    transform: rotate(-90deg) translate(-50%, 0);
+    left: 5%;
+}
+.color_btns_wrap li {
+    display: flex;
+    align-items: center;
+}
+.color_btns_wrap .status_bar {
+    position: relative;
+    height: 2px;
+    width: 180px;
+    margin-right: 30px;
+    background-color: #999;
+}
+.color_btns_wrap .status_bar span {
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: inline-block;
+    height: 100%;
+    width: 30px;
+    transition: width 0.2s;
+}
+
+/* theme btns */
+.themeChk {
+    display: none;
+}
+.themeChk + label {
+    position: relative;
+    display: inline-block;
+    z-index: 1;
+    width: 100px;
+    height: 28px;
+    margin-left: 1.5em;
+    overflow: hidden;
+    font-weight: 500;
+    background-color: #ddddde;
+    border-radius: 20px;
+    cursor: pointer;
+    box-shadow: -1px 0px 4px rgba(23, 22, 26, 0.05);
+}
+.themeChk + label:before,
+.themeChk + label:after {
+    position: absolute;
+    top: 0;
+    width: 50%;
+    text-align: center;
+    display: inline-block;
+    line-height: 26px;
+    color: #6a696c;
+    font-weight: 700;
+    font-size: 1em;
+}
+.themeChk + label:before {
+    content: "Dark";
+}
+.themeChk + label:after {
+    content: "Light";
+    left: 50%;
+}
+.themeChk + label span {
+    display: inline-block;
+    position: absolute;
+    left: 1px;
+    top: 1px;
+    z-index: 3;
+    width: 49px;
+    height: 26px;
+    line-height: 24px;
+    font-weight: 700;
+    font-size: 1em;
+    text-align: center;
+    color: #323232;
+    background-color: #fff;
+    border-radius: 14px;
+    transition: all cubic-bezier(0.4, 0, 0.2, 1) 0.4s;
+    box-shadow: -1px 4px 4px rgba(23, 22, 26, 0.15);
+}
+.themeChk:checked + label span {
+    left: 50px;
+}
