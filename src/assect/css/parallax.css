@@ -1,0 +1,68 @@
+.section {
+}
+
+.section.portfolio {
+    background-color: darkred;
+}
+
+#fp-nav {
+    position: relative !important;
+    height: 2px;
+    width: 180px;
+    margin-right: 30px;
+    background-color: #999;
+    transform: rotate(180deg);
+}
+#fp-nav ul {
+    position: relative;
+    height: 2px;
+    width: 180px;
+}
+#fp-nav ul li {
+    position: absolute;
+    left: 0;
+    top: 0;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+}
+#fp-nav ul li a span.fp-sr-only {
+    display: none;
+}
+#fp-nav ul li a span {
+    border-radius: 0;
+    left: 0;
+    height: 2px;
+    top: 0;
+    margin: 0;
+    background: #323232;
+    transition: width 0.01s;
+}
+#fp-nav ul li a.active span,
+#fp-nav ul li:hover a span {
+    margin: 0 !important;
+    border-radius: 0 !important;
+    height: 100% !important;
+}
+#fp-nav ul li:first-child a.active span {
+    width: 16.6%;
+}
+#fp-nav ul li:nth-child(2) a.active span {
+    width: 33.2%;
+}
+#fp-nav ul li:nth-child(3) a.active span {
+    width: 49.8%;
+}
+#fp-nav ul li:nth-child(4) a.active span {
+    width: 66.4%;
+}
+#fp-nav ul li:nth-child(5) a.active span {
+    width: 83%;
+}
+#fp-nav ul li:nth-child(6) a.active span {
+    width: 100%;
+}
+
+.dark #fp-nav ul li a span {
+    background: #fff;
+}

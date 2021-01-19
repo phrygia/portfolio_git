@@ -56,7 +56,9 @@
 .blog_wrap li:first-child {
     width: 100%;
     overflow: hidden;
-    padding-top: 10%;
+    padding-top: 6%;
+    max-width: 1600px;
+    margin: 0 auto;
 }
 
 .blog_wrap .blog_inner {

@@ -1,60 +1,74 @@
-import React from 'react';
-import ReactFullpage from '@fullpage/react-fullpage';
-import Home from './Home';
-import About from './About';
-import Skill from './Skill';
-import Portfolio from './Portfolio';
-import Blog from './Blog';
-import Contact from './Contact';
-import './fullpage.parallax.min';
+import React from "react";
+import ReactFullpage from "@fullpage/react-fullpage";
+import Home from "./Home";
+import About from "./About";
+import Skill from "./Skill";
+import Portfolio from "./Portfolio";
+import Blog from "./Blog";
+import Contact from "./Contact";
+import "../assect/css/parallax.css";
 
-const anchors = ["1", "2", "3", "4", "5", "6"];
+const anchors = ["home", "about", "skills", "portfolio", "blog", "contact"];
 const pxopt = {
-    type: 'reveal',
+    type: "reveal",
     percentage: 62,
-    property: 'translate'
-}
+    property: "translate",
+};
 const fullpageOptions = {
-    parallax: true
+    parallax: true,
+    licenseKey: "C10939C4-5E0C415E-83B2469C-EE4E639D",
+    anchors: anchors,
+    navigation: true,
+    menu: "#myMenu",
+    scrollingSpeed: 800,
+    navigationPosition: "left",
+    parallaxOptions: pxopt,
+    slidesNavigation: true,
+    slidesNavPosition: "top",
+    setAllowScrolling: true,
+    callbacks: ["onLeave", "afterLoad"],
 };
 
-
 const Fullpage = () => (
-    
-  <ReactFullpage
-    anchors={anchors}
-    navigation
-    navigationTooltips={anchors}
-    licenseKey = {'YOUR_KEY_HERE'}
-    scrollingSpeed = {1000} /* Options here */
-    licenseKey= "C10939C4-5E0C415E-83B2469C-EE4E639D"
-    parallax
-    parallaxOptions = {pxopt}
-
-    render={({ state, fullpageApi }) => {
-      return (
-        <ReactFullpage.Wrapper>
-          <div className="section color_change">
-            <Home />
-          </div>
-          <div className="section color_change">
-            <About />
-          </div>
-          <div className="section color_change">
-            <Skill />
-          </div>
-          <div className="section">
-            <Portfolio />
-          </div>
-          <div className="section color_change">
-            <Blog />
-          </div>
-          <div className="section color_change">
-            <Contact />
-          </div>
-        </ReactFullpage.Wrapper>
-      );
-    }}
-  />
+    <ReactFullpage
+        {...fullpageOptions}
+        onLeave={(origin, destination, direction) => {
+            // console.log("onLeave event", { origin, destination, direction });
+            const nav_title = document.getElementById("nav_title");
+            if (destination.index === 3) {
+                nav_title.classList.add("portfolio");
+            } else {
+                nav_title.classList.remove("portfolio");
+            }
+            nav_title.innerText = destination.anchor;
+            console.log(destination.anchor);
+        }}
+        render={({ state, fullpageApi }) => {
+            return (
+                <>
+                    <ReactFullpage.Wrapper>
+                        <div className="section color_change home">
+                            <Home />
+                        </div>
+                        <div className="section color_change about">
+                            <About />
+                        </div>
+                        <div className="section color_change skill">
+                            <Skill />
+                        </div>
+                        <div className="section portfolio">
+                            <Portfolio />
+                        </div>
+                        <div className="section color_change blog">
+                            <Blog />
+                        </div>
+                        <div className="section color_change contact">
+                            <Contact />
+                        </div>
+                    </ReactFullpage.Wrapper>
+                </>
+            );
+        }}
+    />
 );
 export default Fullpage;

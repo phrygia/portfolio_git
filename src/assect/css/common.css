@@ -384,7 +384,7 @@ textarea {
     transition-duration: 0.5s;
     transition-property: opacity, top;
 }
-.phrygia_side button {
+.phrygia_side a {
     position: relative;
     padding-left: 3.3vh;
     font-size: 3.5vh;
@@ -392,11 +392,11 @@ textarea {
     color: #fff;
     transition: color 0.15s ease-in-out, padding-left 0.3s ease-in-out;
 }
-.phrygia_side li button:hover:before {
+.phrygia_side li a:hover:before {
     left: 7%;
     opacity: 0;
 }
-.phrygia_side button:before {
+.phrygia_side a:before {
     position: absolute;
     left: 0;
     top: 19%;
@@ -405,7 +405,7 @@ textarea {
     font-weight: 500;
     transition: opacity 0.4s ease-in-out, left 0.3s ease-in-out;
 }
-.phrygia_side li button:hover {
+.phrygia_side li a:hover {
     padding-left: 5vh;
 }
 .phrygia_header.open + .phrygia_side li {
@@ -431,28 +431,28 @@ textarea {
     transition-delay: 0.8s;
 }
 
-.phrygia_side li.active button,
-.phrygia_side li.active button:before,
-.phrygia_side li button:hover,
-.phrygia_side li button:hover:before {
+.phrygia_side li.active a,
+.phrygia_side li.active a:before,
+.phrygia_side li a:hover,
+.phrygia_side li a:hover:before {
     color: darkred;
 }
-.phrygia_side li:first-child button:before {
+.phrygia_side li:first-child a:before {
     content: "01";
 }
-.phrygia_side li:nth-child(2) button:before {
+.phrygia_side li:nth-child(2) a:before {
     content: "02";
 }
-.phrygia_side li:nth-child(3) button:before {
+.phrygia_side li:nth-child(3) a:before {
     content: "03";
 }
-.phrygia_side li:nth-child(4) button:before {
+.phrygia_side li:nth-child(4) a:before {
     content: "04";
 }
-.phrygia_side li:nth-child(5) button:before {
+.phrygia_side li:nth-child(5) a:before {
     content: "05";
 }
-.phrygia_side li:last-child button:before {
+.phrygia_side li:last-child a:before {
     content: "06";
 }
 .footer_copy {

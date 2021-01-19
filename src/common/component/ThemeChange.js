@@ -15,8 +15,27 @@ function ThemeChange(props) {
     return (
         <ul className={styles.color_btns_wrap}>
             <li>
-                <div className={styles.status_bar}>
-                    <span id="status_bar" className="reverse_color" />
+                <div id="fp-nav" className="fp-left">
+                    <ul>
+                        <li>
+                            <a href="#home" />
+                        </li>
+                        <li>
+                            <a href="#about" />
+                        </li>
+                        <li>
+                            <a href="#skills" />
+                        </li>
+                        <li>
+                            <a href="#portfolio" />
+                        </li>
+                        <li>
+                            <a href="#blog" />
+                        </li>
+                        <li>
+                            <a href="#contact" />
+                        </li>
+                    </ul>
                 </div>
                 Scroll
             </li>

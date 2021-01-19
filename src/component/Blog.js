@@ -1,5 +1,4 @@
 import React from "react";
-import FullPage from "../common/component/FullPage";
 import styles from "../assect/css/main.module.css";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Navigation } from "swiper";
@@ -54,8 +53,7 @@ function Blog() {
                                 </a>
                                 <p>November 25, 2020</p>
                                 <a>
-                                    [javascript] 함수의 call, apply, bind
-                                    메서드
+                                    [javascript] 함수의 call, apply, bind 메서드
                                 </a>
                             </div>
                         </SwiperSlide>
@@ -65,9 +63,7 @@ function Blog() {
                                     <img src={TestImg} />
                                 </a>
                                 <p>November 16, 2020</p>
-                                <a>
-                                    [react] 모달 팝업창 만들기 (react modal)
-                                </a>
+                                <a>[react] 모달 팝업창 만들기 (react modal)</a>
                             </div>
                         </SwiperSlide>
                         <SwiperSlide>

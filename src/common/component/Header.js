@@ -15,61 +15,15 @@ function Header(props) {
         gneButton.current.classList.toggle("open");
     };
 
-    const clickGnbAndMove = (e) => {
-        const currentId = e.target.parentNode.id;
-        const arr = document.querySelectorAll('.background')
-        let act;    // 현재 act 슬라이더 index
-        for(const ar of arr) {
-            if(ar.classList.contains('active')) {
-                // console.log(ar.id)
-                act = ar.id;
-            }
-        }
-        // console.log(arr.findIndex(document.querySelector(".background.active")))
-        // var $previousSlide2 = document.querySelectorAll(".background")[1];
-        // document
-        //     .querySelectorAll(".background")
-        //     [currentId - 1].classList.remove("down-up");
-        // document
-        //     .querySelectorAll(".background")
-        //     [currentId - 1].classList.add("down-scroll");
-
-        //현재 클릭한 노드 아이디
-        const currentId2 = currentId.slice(0, 1);
-
-        //모든 메뉴의 classname 삭제
-        const arr2 = e.target.parentNode.parentNode.childNodes
-        for (const arr of arr2) {
-            arr.className = '';
-        }
-        e.target.parentNode.className = 'active';
-
-        if(Number(act) < Number(currentId2)) {
-            arr.forEach(function(v, i) {
-                if(i < currentId2) {
-                    if(document.querySelectorAll('.background')[i].classList.contains('active')) {
-                        document.querySelectorAll('.background')[i].classList.remove('active')
-                    }
-                    document.querySelectorAll('.background')[i].classList.remove('up-scroll')
-                    document.querySelectorAll('.background')[i].classList.add('down-scroll')
-                    document.querySelectorAll('.background')[i+1].classList.add('active')
-                }
-            })
-            console.log('bigger')
-        } else if(Number(act) > Number(currentId2)) {
-            arr.forEach(function(v, i) {
-            })
-            console.log('smaller')
-        } else if(Number(act) == Number(currentId2)) {
-            console.log('same')
-        }
+    const sideColse = () => {
+        gneButton.current.classList.remove("open");
     };
 
     return (
         <>
             <header className="phrygia_header" ref={gneButton}>
                 <div className={styles.header_wrap}>
-                    {/* <a href="">phrygia Web Portfolio</a> */}
+                    <a href="">phrygia Web Portfolio</a>
                 </div>
                 <button onClick={gnbBtnClick}>
                     <span className="reverse_color mouse_hover"></span>
@@ -79,24 +33,36 @@ function Header(props) {
             </header>
             <aside className="phrygia_side">
                 <nav>
-                    <ul>
-                        <li id="00" className="active">
-                            <button onClick={clickGnbAndMove}>Home</button>
+                    <ul id="myMenu">
+                        <li data-menuanchor="home">
+                            <a href="#home" onClick={sideColse}>
+                                Home
+                            </a>
                         </li>
-                        <li id="11">
-                            <button onClick={clickGnbAndMove}>About</button>
+                        <li data-menuanchor="about">
+                            <a href="#about" onClick={sideColse}>
+                                About
+                            </a>
                         </li>
-                        <li id="22">
-                            <button onClick={clickGnbAndMove}>Skills</button>
+                        <li data-menuanchor="skills">
+                            <a href="#skills" onClick={sideColse}>
+                                Skills
+                            </a>
                         </li>
-                        <li id="33">
-                            <button onClick={clickGnbAndMove}>Portfolio</button>
+                        <li data-menuanchor="portfolio">
+                            <a href="#portfolio" onClick={sideColse}>
+                                Portfolio
+                            </a>
                         </li>
-                        <li id="44">
-                            <button onClick={clickGnbAndMove}>Blog</button>
+                        <li data-menuanchor="blog">
+                            <a href="#blog" onClick={sideColse}>
+                                Blog
+                            </a>
                         </li>
-                        <li id="55">
-                            <button onClick={clickGnbAndMove}>Contact</button>
+                        <li data-menuanchor="contact">
+                            <a href="#contact" onClick={sideColse}>
+                                Contact
+                            </a>
                         </li>
                     </ul>
                 </nav>
