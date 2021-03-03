@@ -1,7 +1,7 @@
 import React from "react";
-import FullPage from "../common/component/FullPage";
 import unsplash from "../assect/img/altumcode-unsplash.jpg";
 import styles from "../assect/css/main.module.css";
+import Person from "../assect/img/person.png";
 
 function Home() {
     return (
@@ -15,7 +15,7 @@ function Home() {
                     </h1>
                 </li>
                 <li className={styles.right}>
-                    <img src={unsplash} alt="" />
+                    <img src={Person} alt="" />
                 </li>
             </ul>
         </>

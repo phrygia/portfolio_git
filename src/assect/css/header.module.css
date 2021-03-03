@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+
 .color_btns_wrap {
     position: fixed;
     /* left: 0; */
@@ -79,4 +81,17 @@
 }
 .themeChk:checked + label span {
     left: 50px;
+}
+
+.header_logo {
+    position: fixed;
+    left: 96px;
+    top: 47px;
+    z-index: 3;
+    font-size: 28px;
+    font-weight: 700;
+    font-family: 'Lato', sans-serif;
+}
+.header_logo span {
+    color:darkred
 }

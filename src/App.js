@@ -1,22 +1,24 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useEffect, useRef, useReducer } from "react";
 import "./assect/css/common.css";
 import Footer from "./common/component/Footer";
 import Header from "./common/component/Header";
-// import About from "./component/About";
-// import Blog from "./component/Blog";
-// import Contact from "./component/Contact";
-// import Home from "./component/Home";
-// import Portfolio from "./component/Portfolio";
-// import Skill from "./component/Skill";
 import Fullpage from "./component/Fullpage";
+import reducer from './_reducers/reducer'
 
-// 전역 상태관리 -> 현재 active 인덱스 (nav 메뉴나 현재 active)
-// 현재 theme
+//context api -> 전역 상태관리
+// store만들고 dispatch로 관리 
+
+const initialState = {
+    nav_title: 'Home',
+    nav_title_class: '',
+    theme_color: 'Dark'   
+}
+
+export const store = React.createContext();
+
 function App() {
-    const [color, setColor] = useState(false);
-    const parentAppFunction = (color) => {
-        setColor(color);
-    };
+
+    const [state, dispatch] = useReducer(reducer, initialState);
     const mouseCursor = useRef();
 
     useEffect(() => {
@@ -29,13 +31,17 @@ function App() {
         };
     }, [mouseCursor]);
 
-    function mouseFollow(event) {
-        // console.log(mouseCursor.current.style);
+    // mouse cursor circle effect
+    const mouseFollow = (event) => {
         mouseCursor.current.style.left = event.clientX - 20 + "px";
         mouseCursor.current.style.top = event.clientY - 16 + "px";
     }
-    function mouseOver(event) {
+
+    // mouseover cursor effect
+    const mouseOver = (event) => {
         const getTagName = event.toElement.nodeName.toLowerCase();
+
+        // label, a, button tag
         if (
             getTagName === "label" ||
             getTagName === "a" ||
@@ -48,20 +54,19 @@ function App() {
         } else {
             mouseCursor.current.classList.remove("hover");
         }
-        // console.log(event.toElement.className);
     }
 
     return (
-        <main className={`${color ? "light" : "dark"}`}>
-            <div id="ball" ref={mouseCursor} />
-            <Header parentAppFunction={parentAppFunction} />
-            <section>
-                <Fullpage />
-
-
-            </section>
-            <Footer />
-        </main>
+        <store.Provider value={[state, dispatch]}>
+            <main className={`${state.theme_color === 'Dark' ? "dark" : "light"}`}>
+                <div id="ball" ref={mouseCursor} />
+                <Header />
+                <section>
+                    <Fullpage />
+                </section>
+                <Footer />
+            </main>
+        </store.Provider>
     );
 }
 

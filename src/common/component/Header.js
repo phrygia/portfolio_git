@@ -1,16 +1,13 @@
-import React, { useState, useRef } from "react";
+import React, { useRef, useContext } from "react";
 import styles from "../../assect/css/header.module.css";
 import ThemeChange from "./ThemeChange";
+import { store } from '../../App'
 
 function Header(props) {
-    //ThemeChange(자식)에서 현재 theme 색상을 받아와서 class로 줌
-    const [color, setColor] = useState(false);
+
+    const [ state, dispatch ] = useContext(store);
     const gneButton = useRef();
-    const parentFunction = (color) => {
-        setColor(color);
-        //app으로 상태 올려줌
-        props.parentAppFunction(color);
-    };
+  
     const gnbBtnClick = () => {
         gneButton.current.classList.toggle("open");
     };
@@ -23,7 +20,9 @@ function Header(props) {
         <>
             <header className="phrygia_header" ref={gneButton}>
                 <div className={styles.header_wrap}>
-                    <a href="">phrygia Web Portfolio</a>
+                    <a href="/" className={styles.header_logo}>
+                        Phrygia<span>.</span>
+                    </a>
                 </div>
                 <button onClick={gnbBtnClick}>
                     <span className="reverse_color mouse_hover"></span>
@@ -67,8 +66,8 @@ function Header(props) {
                     </ul>
                 </nav>
             </aside>
-            <ThemeChange parentFunction={parentFunction} />
-            <h1 id="nav_title">Home</h1>
+            <ThemeChange />
+            <h1 id="nav_title" className={`${state.nav_title_class}`}>{state.nav_title}</h1>
         </>
     );
 }

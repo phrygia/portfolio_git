@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useCallback } from "react";
 import ReactFullpage from "@fullpage/react-fullpage";
 import Home from "./Home";
 import About from "./About";
@@ -7,8 +7,14 @@ import Portfolio from "./Portfolio";
 import Blog from "./Blog";
 import Contact from "./Contact";
 import "../assect/css/parallax.css";
+import { store } from '../App'
 
+const pluginWrapper = () => {
+    require('../assect/js/parallex.min');
+};
+  
 const anchors = ["home", "about", "skills", "portfolio", "blog", "contact"];
+
 const pxopt = {
     type: "reveal",
     percentage: 62,
@@ -17,6 +23,7 @@ const pxopt = {
 const fullpageOptions = {
     parallax: true,
     licenseKey: "C10939C4-5E0C415E-83B2469C-EE4E639D",
+    parallaxKey: "C10939C4-5E0C415E-83B2469C-EE4E639D",
     anchors: anchors,
     navigation: true,
     menu: "#myMenu",
@@ -29,19 +36,19 @@ const fullpageOptions = {
     callbacks: ["onLeave", "afterLoad"],
 };
 
-const Fullpage = () => (
-    <ReactFullpage
+const Fullpage = () => {
+    const [ state, dispatch ] = useContext(store);
+
+    return <ReactFullpage
+        // pluginWrapper = {pluginWrapper}
         {...fullpageOptions}
         onLeave={(origin, destination, direction) => {
-            // console.log("onLeave event", { origin, destination, direction });
-            const nav_title = document.getElementById("nav_title");
             if (destination.index === 3) {
-                nav_title.classList.add("portfolio");
+                dispatch({ type: 'NAV_TITLE_CLASS', nav_title_class: 'portfolio' });
             } else {
-                nav_title.classList.remove("portfolio");
+                dispatch({ type: 'NAV_TITLE_CLASS', nav_title_class: '' });
             }
-            nav_title.innerText = destination.anchor;
-            console.log(destination.anchor);
+            dispatch({ type: 'NAV_TITLE_CHANGE', nav_title: destination.anchor });
         }}
         render={({ state, fullpageApi }) => {
             return (
@@ -70,5 +77,5 @@ const Fullpage = () => (
             );
         }}
     />
-);
+};
 export default Fullpage;

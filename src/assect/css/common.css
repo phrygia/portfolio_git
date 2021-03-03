@@ -263,9 +263,9 @@ textarea {
 .phrygia_header button {
     width: 56px;
     height: 56px;
-    position: absolute;
+    position: fixed;
     top: 40px;
-    left: 55px;
+    right: 55px;
     border-radius: 100%;
     /* margin: 50px auto; */
     -webkit-transform: rotate(0deg);
@@ -353,14 +353,14 @@ textarea {
     background-color: #fff;
 }
 .phrygia_header.open + .phrygia_side {
-    left: 0;
+    right: 0;
     visibility: visible;
 }
 
 /* side menu */
 .phrygia_side {
     position: fixed;
-    left: -400px;
+    right: -400px;
     top: 0;
     z-index: 101;
     width: 35%;
@@ -371,7 +371,7 @@ textarea {
     visibility: hidden;
     transition-duration: 0.5s;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    transition-property: visibility, left;
+    transition-property: visibility, right;
 }
 .phrygia_side nav {
     padding: 50% 0 0 15%;
@@ -463,32 +463,32 @@ textarea {
     font-size: 0.9em;
     font-weight: 500;
 }
-article.blog .swiper-slide {
+.section.blog .swiper-slide {
     padding-top: 2%;
     transition: padding-top 0.35s;
 }
-article.blog .swiper-slide:hover {
+.section.blog .swiper-slide:hover {
     padding-top: 0%;
 }
-article.blog .swiper-slide:hover a:last-child {
+.section.blog .swiper-slide:hover a:last-child {
     color: darkred;
 }
-article.blog .swiper-container {
+.section.blog .swiper-container {
     overflow: visible;
 }
-article.blog .swiper-button-prev:after,
-article.blog .swiper-button-next:after {
+.section.blog .swiper-button-prev:after,
+.section.blog .swiper-button-next:after {
     display: none;
 }
-article.blog .swiper-button-prev {
+.section.blog .swiper-button-prev {
     left: auto;
     right: calc(4.5% + 56px);
 }
-article.blog .swiper-button-next {
+.section.blog .swiper-button-next {
     right: 3%;
 }
-article.blog .swiper-button-next,
-article.blog .swiper-button-prev {
+.section.blog .swiper-button-next,
+.section.blog .swiper-button-prev {
     top: -80px;
     margin-top: 0;
     width: 56px;
@@ -499,23 +499,55 @@ article.blog .swiper-button-prev {
     background-position: center;
     background-repeat: no-repeat;
 }
-main.dark article.blog .swiper-button-next {
+main.dark .section.blog .swiper-button-next {
     background-image: url(../img/right-arrow-wh.svg);
 }
-main.dark article.blog .swiper-button-prev {
+main.dark .section.blog .swiper-button-prev {
     background-image: url(../img/left-arrow-wh.svg);
 }
 
-main.light article.blog .swiper-button-next {
+main.light .section.blog .swiper-button-next {
     background-image: url(../img/right-arrow-bk.svg);
 }
-main.light article.blog .swiper-button-prev {
+main.light .section.blog .swiper-button-prev {
     background-image: url(../img/left-arrow-bk.svg);
 }
 
-article.blog.active li:nth-child(2) {
+.section.blog.active li:nth-child(2) {
     opacity: 1;
     right: -20%;
     bottom: -35%;
     transition-delay: 0.4s;
+}
+
+#nav_title {
+    position: fixed;
+    left: -30vh;
+    top: 44%;
+    z-index: 10;
+    line-height: 0.5;
+    white-space: nowrap;
+    letter-spacing: -0.02em;
+    font-size: 250px;
+    font-weight: 700;
+    color: rgba(136, 136, 136, 0.1);
+    transform: rotate(-90deg);
+    width: 100vh;
+    text-align: center;
+    font-family: "Montserrat", sans-serif;
+    text-transform: uppercase;
+}
+#nav_title.portfolio {
+    color: rgba(255, 255, 255, 0.2);
+    transition: 1s color 0s;
+}
+#nav_title:before {
+    content: "";
+    width: 35%;
+    height: 400%;
+    position: fixed;
+    right: 0;
+    top: 15vw;
+    background: url(../img/pattern.svg) repeat 0 0;
+    z-index: 3;
 }

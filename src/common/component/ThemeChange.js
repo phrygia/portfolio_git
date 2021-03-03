@@ -1,16 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import styles from "../../assect/css/header.module.css";
+import { store } from '../../App'
 
 function ThemeChange(props) {
-    const [color, setColor] = useState(false);
-    const [checked, setChecked] = useState(false); //false면 dark
 
-    //header(부모) 컴포넌트로 현재 theme 컬러값 보내줌
-    const childFunction = (e) => {
-        setChecked(e.target.checked);
-        setColor(!color);
-        props.parentFunction(!color);
-    };
+    const [state, dispatch] = useContext(store);
+    const [checked, setChecked] = useState(false); //false면 dark
+    
+    const themeChangeHandler = () => {
+        setChecked(!checked);
+        dispatch({ type: 'COLOR_CHANGE', theme_color: checked ? 'Dark' : 'Light' })
+        console.log(state)
+    }
 
     return (
         <ul className={styles.color_btns_wrap}>
@@ -45,11 +46,12 @@ function ThemeChange(props) {
                     className={styles.themeChk}
                     type="checkbox"
                     checked={checked}
-                    onChange={childFunction}
+                    // onClick={themeChangeHandler}
+                    onChange={themeChangeHandler}
                 />
                 <label htmlFor="themeChk">
                     <span className="mouse_hover">
-                        {color ? "Light" : "Dark"}
+                        {state.theme_color}
                     </span>
                 </label>
             </li>
